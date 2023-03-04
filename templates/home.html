@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Phone Tracker</title>
+        {% include 'bootstrap.html' %}
+    </head>
+    <body>
+        {% include 'navbar.html' %}
+        <div class="containner">
+            <h1 class="text-center mt-2 mb-4" >Phone Tracker</h1>
+            {% include "banner.html" %}
+
+            <div class='row' style="margin-bottom:16px">
+                <div class="col-md-6">
+
+                <p class="lead px-5"> This app generates information for any phone number whether it is a landline or a cell phone.
+                    Even if it is separated by "." or "-".
+                    The number must be in international format with "+" Ex: +40739.........
+                    For cell phones: country where the phone number is registered, continent, country time,
+                    national currency, currency symbol, currency name, country code, country-specific latitude
+                    and longitude coordinates and render this location on the popup map. For landlines,
+                    it shows the city where the phone number is registered and the metropolitan area.
+                </p>
+
+                <form action="/phone/{{nr}}/apply" class="border-bottom row lead px-5 mt-1 pb-5" >
+                    <label class="col-6" >Phone number Format: +40739......... </label><br>
+                    <input class="col-3 position-relative" type="tel" name="phone_number" placeholder="+40739.........">
+                    <input type="submit" class="btn btn-success col-2" name="search">
+
+                </form>
+
+                </div>
+
+
+            </div>
+        </div>
+        {% include 'footer.html' %}
+
+
+    </body>
+</html>
