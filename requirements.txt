@@ -6,3 +6,4 @@ opencage
 timezonefinder
 datetime
 pytz
+geopy
