@@ -1,0 +1,8 @@
+Flask
+gunicorn
+geocoder
+phonenumbers
+opencage
+timezonefinder
+datetime
+pytz
