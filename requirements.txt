@@ -7,3 +7,4 @@ timezonefinder
 datetime
 pytz
 geopy
+folium

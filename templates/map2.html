@@ -1,0 +1,94 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--</body>-->
+<!--</html>-->
+<iframe srcdoc="<!DOCTYPE html>
+<html>
+<head>
+
+    <meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; />
+
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;></script>
+    <script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;></script>
+    <script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;></script>
+    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;></script>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/>
+
+            <meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
+            <style>
+                #map_33f78ffc24c518c34b59f685fc859da9 {
+                    position: relative;
+                    width: 45.0%;
+                    height: 45.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+</head>
+<body>
+
+
+            <div class=&quot;folium-map&quot; id=&quot;map_33f78ffc24c518c34b59f685fc859da9&quot; ></div>
+
+</body>
+<script>
+
+
+            var map_33f78ffc24c518c34b59f685fc859da9 = L.map(
+                &quot;map_33f78ffc24c518c34b59f685fc859da9&quot;,
+                {
+                    center: [info['lat'], info['lng']],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 6,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+
+
+
+
+            var tile_layer_ff6496dd82f3c71bd3a22d3049ebe25b = L.tileLayer(
+                &quot;https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg&quot;,
+                {&quot;attribution&quot;: &quot;Map tiles by \u003ca target=\&quot;_blank\&quot; href=\&quot;http://stamen.com\&quot;\u003eStamen Design\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://creativecommons.org/licenses/by/3.0\&quot;\u003eCC BY 3.0\u003c/a\u003e. Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://creativecommons.org/licenses/by-sa/3.0\&quot;\u003eCC BY SA\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_33f78ffc24c518c34b59f685fc859da9);
+            var marker_a5dd4fd5d5f923383ddf3ce9c7e026d2 = L.marker(
+                [44.1767161, 28.6507598],
+                {}
+            ).addTo(map_33f78ffc24c518c34b59f685fc859da9);
+        var popup_e878b024e0eafdd3ed8d592fa5e76d00 = L.popup({&quot;maxWidth&quot;: &quot;100%&quot;});
+                var html_d463c78d2a24bd233c9a6fb598c12ee1 = $(`<div id=&quot;html_d463c78d2a24bd233c9a6fb598c12ee1&quot; style=&quot;width: 100.0%; height: 100.0%;&quot;><i>Marker Here</i></div>`)[0];
+                popup_e878b024e0eafdd3ed8d592fa5e76d00.setContent(html_d463c78d2a24bd233c9a6fb598c12ee1);
+        marker_a5dd4fd5d5f923383ddf3ce9c7e026d2.bindPopup(popup_e878b024e0eafdd3ed8d592fa5e76d00)
+        ;
+            marker_a5dd4fd5d5f923383ddf3ce9c7e026d2.bindTooltip(
+                `<div>
+                     Your phone is located in Constanța, Constanta Metropolitan Area, Constanța, Romania!
+                 </div>`,
+                {&quot;sticky&quot;: true}
+            );
+
+</script>
+</html>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>

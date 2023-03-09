@@ -10,8 +10,24 @@
         <div class="containner">
             <h1 class="text-center mt-2 mb-4" >Phone Tracker</h1>
             {% include "banner.html" %}
-            <h2> {{dict_info}}</h2>
+<!--            {'lat': 45.9852129, 'lng': 24.6859225, 'country': 'Romania',
+'continent': 'Europe', 'country_code': 'RO', 'currency': 'RON', 'symbol': 'Lei',
+'currency_name': 'Romanian Leu', 'location': Location(Romania, (45.9852129, 24.6859225, 0.0)),
+ 'current_time': '10:09.PM'}-->
+            <h2 >
+                <p class="px-5">The number {{nr}} is registered in {{info['location']}} / {{info['continent']}}<br>
+            The country code is {{info['country_code']}}<br> The local currency is {{info['currency']}}, the symbol is {{info['symbol']}}<br>
+                Local time in {{info['country']}} is {{info['current_time']}}
+                </p>
+            </h2>
 
+        <div>
+
+             <form action="/map" class="text-center mt-2 mb-4 " >
+                    <button type="submit" class="btn btn-success col-2 "  value="Show Map">Show the location on the map</button>
+
+            </form>
+        </div>
 
         </div>
         {% include 'footer.html' %}

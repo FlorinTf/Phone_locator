@@ -7,30 +7,40 @@
     </head>
     <body>
         {% include 'navbar.html' %}
-        <div class="containner">
+        <div class="containner ">
             <h1 class="text-center mt-2 mb-4" >Phone Tracker</h1>
             {% include "banner.html" %}
 
-            <div class='row' style="margin-bottom:16px">
-                <div class="col-md-6">
-
-                <p class="lead px-5"> This app generates information for any phone number whether it is a landline or a cell phone.
-                    Even if it is separated by "." or "-".
-                    The number must be in international format with "+" Ex: +40739.........
-                    For cell phones: country where the phone number is registered, continent, country time,
-                    national currency, currency symbol, currency name, country code, country-specific latitude
-                    and longitude coordinates and render this location on the popup map. For landlines,
-                    it shows the city where the phone number is registered and the metropolitan area.
-                </p>
-
-                <form action="/phone/{{nr}}/apply" class="border-bottom row lead px-5 mt-1 pb-5" >
-                    <label class="col-6" >Phone number Format: +40739......... </label><br>
-                    <input class="col-3 position-relative" type="tel" name="phone_number" placeholder="+40739.........">
-                    <input type="submit" class="btn btn-success col-2" name="search">
-
-                </form>
+            <div class='row' style="margin-bottom:16px ">
+                <div class="col">
 
                 </div>
+                <div class="col-8">
+                <p class="lead px-5"><b> This application generates information for any phone number,
+                    whether it is a landline or mobile. Even if separated by "." or "-".<br>
+                    The number must be in international format with "+"-"Country code"+"number" Ex: +4073952...... .<br>
+                    For mobile phones, it generates the following information: country where the phone number
+                    is registered, continent,<br> country time, national currency, currency symbol, currency name,
+                    country code, latitude and longitude coordinates specific<br> to the country and display this
+                    location on the pop-up map .<br>
+                    And for landlines, it shows the city where the phone number is registered and the metropolitan area.</b>
+                </p>
+                </div>
+                <div class="col">
+
+                </div>
+                    <form action="/phone/{{nr}}/apply" class="border-bottom row lead px-5 mt-2 pb-3" >
+                        <label class="col-4 text-center" ><b>Phone number Format: +40739......... </b></label>
+                        <input class="col-2 position-relative" type="tel" name="phone_number" placeholder="+407395........">
+                        <input type="submit" class="btn btn-success col-2" name="search">
+                        <div class="col-2">
+
+                        </div>
+
+                    </form>
+
+
+
 
 
             </div>

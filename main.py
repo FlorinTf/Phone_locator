@@ -1,15 +1,8 @@
 from flask import Flask,render_template, request, jsonify
 from date import date
-from geopy.geocoders import Nominatim
-import phonenumbers
-from opencage.geocoder import OpenCageGeocode
-from phonenumbers import timezone
 from phonenumbers import geocoder
-from phonenumbers import carrier
-from timezonefinder import TimezoneFinder
-from datetime import datetime
 from flask import jsonify, Flask, request
-import pytz
+import folium
 
 
 app = Flask(__name__)
@@ -20,10 +13,61 @@ def home():
 
 @app.route("/<nr>/apply")
 def search(nr):
+    global info
+    global numar
+
     data = request.args
     nr=data['phone_number']
-    informatii = date(nr,geocoder)
-    return render_template('info.html', dict_info=informatii)
+    numar = data['phone_number']
+    info = date(nr,geocoder)
+    locatie = info['location'][0]
+    lat = info['lat']
+    lng = info['lng']
+    return harta()
+    # return render_template('info.html', info=info,nr=nr, map=map)
+
+# @app.route('/map')
+def harta():
+    locatie = info['location'][0]
+    lat = info['lat']
+    lng = info['lng']
+    # html="http://127.0.0.1:5000"
+    map = folium.Map(location=[lat,lng],width="60%",height="60%",  tiles= 'Stamen Terrain', zoom_start=6)
+    folium.Marker(location=[lat,lng], tooltip=f"Your phone is located in {locatie}!",
+                  popup="<a href=http://127.0.0.1:5000>Search Again</a>", icon=folium.Icon(color='red') ).add_to(map)
+    map.get_root().html.add_child(folium.Element(f"""
+        <html>
+            <head>
+                <title>Phone Tracker</title>
+                <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+          crossorigin="anonymous">
+            </head>
+            <body>  
+                <nav class="navbar bg-body-tertiary">
+                  <div class="containner ">
+                    <a class="navbar-brand" href="http://127.0.0.1:5000">
+                    <img src="/static/icon.ico" alt="Phone Tracker" width="50" height="50">
+                    <h1 class="text-left">New Search</h1></a>
+                    
+                  </div>
+                  <h1 class="text-center mt-2 mb-4" >Phone Tracker</h1>
+                </nav>          
+                <div>
+                    <h2 >
+                        <p class="px-5">The number {numar} is registered in {info['location']} / {info['continent']}<br>
+                    The country code is {info['country_code']}<br> The local currency is {info['currency']}, the symbol is {info['symbol']}<br>
+                        Local time in {info['country']} is {info['current_time']}
+                        </p>
+                    </h2>       
+                </div>
+            </body>
+        </html>    
+    """))
+    return map._repr_html_()
+
 
 if __name__ == "__main__":
     app.run(debug=True)

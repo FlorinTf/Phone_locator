@@ -1,4 +1,3 @@
-from flask import Flask,render_template, request, jsonify
 from geopy.geocoders import Nominatim
 import phonenumbers
 from opencage.geocoder import OpenCageGeocode
@@ -7,7 +6,6 @@ from phonenumbers import geocoder
 from phonenumbers import carrier
 from timezonefinder import TimezoneFinder
 from datetime import datetime
-from flask import jsonify, Flask, request
 import pytz
 
 
@@ -45,6 +43,8 @@ def date(nr,geocoder=geocoder):
     result = geocoder.geocode(query)
     lat = result[0]['geometry']['lat']
     lng = result[0]['geometry']['lng']
+    dict_info['lat']=result[0]['geometry']['lat']
+    dict_info['lng']=lng = result[0]['geometry']['lng']
     gps_button=f'{lat}, {lng}'
     dict_info['country'] = result[0]['components']['country']
     # country_ans=country_s
