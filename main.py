@@ -41,7 +41,7 @@ def harta():
     # f"<a href=https://phone-locator.onrender.com/>Search Again</a>"
     map = folium.Map(location=[lat,lng],width="60%",height="60%",  tiles= 'Stamen Terrain', zoom_start=6)
     folium.Marker(location=[lat,lng], tooltip=f"Your phone is located in {locatie}!",
-                  popup=myip, icon=folium.Icon(color='red') ).add_to(map)
+                  popup=f"<a href=https://phone-locator.onrender.com/>Search Again</a>", icon=folium.Icon(color='red') ).add_to(map)
     map.get_root().html.add_child(folium.Element(f"""
         <html>
             <head>
@@ -66,7 +66,7 @@ def harta():
                     <h2 >
                         <p class="px-5">The number {numar} is registered in {info['location']} / {info['continent']}<br>
                     The country code is {info['country_code']}<br> The local currency is {info['currency']}, the symbol is {info['symbol']}<br>
-                        Local time in {info['country']} is {info['current_time']}
+                        Local time in {info['country']} is {info['current_time']}<br>{myip}
                         </p>
                     </h2>       
                 </div>
