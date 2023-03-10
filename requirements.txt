@@ -8,5 +8,4 @@ datetime
 pytz
 geopy
 folium
-socket
 requests
