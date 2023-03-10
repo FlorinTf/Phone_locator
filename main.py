@@ -3,6 +3,7 @@ from date import date
 from phonenumbers import geocoder
 from flask import jsonify, Flask, request
 import folium
+import socket
 
 
 app = Flask(__name__)
@@ -31,10 +32,9 @@ def harta():
     locatie = info['location'][0]
     lat = info['lat']
     lng = info['lng']
-    # html="http://127.0.0.1:5000"
     map = folium.Map(location=[lat,lng],width="60%",height="60%",  tiles= 'Stamen Terrain', zoom_start=6)
     folium.Marker(location=[lat,lng], tooltip=f"Your phone is located in {locatie}!",
-                  popup="<a href=http://127.0.0.1:5000>Search Again</a>", icon=folium.Icon(color='red') ).add_to(map)
+                  popup=f"<a href=https://phone-locator.onrender.com/>{myip}</a>", icon=folium.Icon(color='red') ).add_to(map)
     map.get_root().html.add_child(folium.Element(f"""
         <html>
             <head>
@@ -48,7 +48,7 @@ def harta():
             <body>  
                 <nav class="navbar bg-body-tertiary">
                   <div class="containner ">
-                    <a class="navbar-brand" href="http://127.0.0.1:5000">
+                    <a class="navbar-brand" href="https://phone-locator.onrender.com/">
                     <img src="/static/icon.ico" alt="Phone Tracker" width="50" height="50">
                     <h1 class="text-left">New Search</h1></a>
                     
@@ -68,6 +68,8 @@ def harta():
     """))
     return map._repr_html_()
 
+hostname = socket.gethostname()
+myip = socket.gethostbyname(hostname)
 
 if __name__ == "__main__":
     app.run(debug=True)
