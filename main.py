@@ -2,6 +2,7 @@ from flask import Flask,render_template, request, jsonify
 from date import date
 from phonenumbers import geocoder
 from flask import jsonify, Flask, request
+import geocoder as geo
 import folium
 import requests
 
@@ -36,15 +37,17 @@ def harta():
     else:
         myip= request.environ.get('HTTP_X_FORWARDED_FOR')
 
-    url = f"href=https://ipapi.co/{myip}/json/"
-    info_ip=requests.get(url)
+    url = geo.ipinfo(myip)
+    info_ip=url.latlng
+
+
 
     locatie = info['location'][0]
     lat = info['lat']
     lng = info['lng']
     map = folium.Map(location=[lat,lng],width="60%",height="60%",  tiles= 'Stamen Terrain', zoom_start=6)
     folium.Marker(location=[lat,lng], tooltip=f"Your phone is located in {locatie}!",
-                  popup=f"<a href=https://phone-locator.onrender.com/>Search Again</a>", icon=folium.Icon(color='red') ).add_to(map)
+                  popup=f"<a href='https://phone-locator.onrender.com/'>New Search</a>", icon=folium.Icon(color='red') ).add_to(map)
     map.get_root().html.add_child(folium.Element(f"""
         <html>
             <head>
