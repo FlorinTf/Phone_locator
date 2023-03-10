@@ -4,7 +4,7 @@ from phonenumbers import geocoder
 from flask import jsonify, Flask, request
 import folium
 import requests
-import socket
+
 
 
 app = Flask(__name__)
