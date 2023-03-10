@@ -29,12 +29,19 @@ def search(nr):
 
 # @app.route('/map')
 def harta():
+    # myip = request.environ['REMOTE_ADDR']
+    if request.environ.get('HTTP_X_FORWARDED_FOR') is None:
+        myip = request.environ['REMOTE_ADDR']
+    else:
+        myip= request.environ.get('HTTP_X_FORWARDED_FOR')
+
     locatie = info['location'][0]
     lat = info['lat']
     lng = info['lng']
+    # f"<a href=https://phone-locator.onrender.com/>Search Again</a>"
     map = folium.Map(location=[lat,lng],width="60%",height="60%",  tiles= 'Stamen Terrain', zoom_start=6)
     folium.Marker(location=[lat,lng], tooltip=f"Your phone is located in {locatie}!",
-                  popup=f"<a href=https://phone-locator.onrender.com/>{myip}</a>", icon=folium.Icon(color='red') ).add_to(map)
+                  popup=myip, icon=folium.Icon(color='red') ).add_to(map)
     map.get_root().html.add_child(folium.Element(f"""
         <html>
             <head>
@@ -68,8 +75,7 @@ def harta():
     """))
     return map._repr_html_()
 
-hostname = socket.gethostname()
-myip = socket.gethostbyname(hostname)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
