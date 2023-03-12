@@ -33,8 +33,6 @@ def search(nr):
 # @app.route('/map')
 def harta():
 
-
-
     new_ip = ip()
     # {'country_code': 'RO', 'country_name': 'Romania', 'city': 'Constanța', 'postal': '900270', 'latitude': 44.1807, 'longitude': 28.6343, 'IPv4': '5.14.129.88', 'state': 'Constanta'}
     locatie = info['location'][0]
@@ -68,7 +66,7 @@ def harta():
                         <p class="px-5">The number {numar} is registered in {info['location']} / {info['continent']}<br>
                     The country code is {info['country_code']}<br> The local currency is {info['currency']}, the symbol is {info['symbol']}<br>
                         Local time in {info['country']} is {info['current_time']}<br>
-                        You are in {new_ip['city']}/{new_ip['country_name']}
+                        You are in {new_ip['city']} / {new_ip['country_name']}
                         </p>
                     </h2>       
                 </div>

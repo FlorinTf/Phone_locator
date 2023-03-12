@@ -13,33 +13,33 @@
             <h1 class="text-center mt-2 mb-4" ><img id="banner1" src="/static/work in progress.jpg" class="img-thumbnail" alt="Cinque Terre" height="360">       Phone Tracker </h1>
             {% include "banner.html" %}
 
-            <div class='row' style="margin-bottom:16px ">
+            <div class='row'  style="margin-bottom:16px">
                 <div class="col">
 
                 </div>
-                <div class="col-8">
+                <div class="col-8" >
                 <p class="lead px-5"><b> This application generates information for any phone number,
-                    whether it is a landline or mobile. Even if separated by "." or "-".<br>
+                    whether it is a landline or mobile. Even if separated by "." , " " or "/".<br>
                     The number must be in international format with "+"-"Country code"+"number" Ex: +4073952...... .<br>
                     For mobile phones, it generates the following information: country where the phone number
                     is registered, continent,<br> country time, national currency, currency symbol, currency name,
                     country code, latitude and longitude coordinates specific<br> to the country and display this
                     location on the pop-up map .<br>
-                    And for landlines, it shows the city where the phone number is registered and the metropolitan area.</b>
-                </p>
+                    And for landlines, it shows the city where the phone number is registered and the metropolitan area.</b></p>
                 </div>
                 <div class="col">
 
                 </div>
+                    <div class="text-center mt-2 mb-4">
                     <form action="/phone/{{nr}}/apply" class="border-bottom row lead px-5 mt-2 pb-3" >
-                        <label class="col-4 text-center" ><b>Phone number Format: +40739......... </b></label>
-                        <input class="col-2 position-relative" type="tel" name="phone_number" placeholder="+407395........">
-                        <input type="submit" class="btn btn-success col-2" name="search">
+                        <label class=" form-label col-5" style="text-align:right;"><b>Phone number Format: +4073962....... </b></label>
+                        <input class="col-2 position-relative" type="tel" pattern="[+]{1}[.| |/|-|0-9]{8,18}"
+                               required name="phone_number" placeholder="+(country code)7395........" maxlength="18" minlength="8">
+                        <input type="submit" class="btn btn-success col-2">
                         <div class="col-2">
-
                         </div>
-
                     </form>
+                </div>
 
 
 
