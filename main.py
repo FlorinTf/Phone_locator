@@ -84,9 +84,7 @@ def harta():
 def add_info_to_db():
     time = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-    db_connection_string = "mysql+pymysql://xtt21s7bt0zkkiuqqqqw:" \
-                           "pscale_pw_VxZjpEoeNk2k7Op24myI3Yk0aYM20SGKRNZgXe1cafB@" \
-                           "eu-central.connect.psdb.cloud/phone_locator?charset=utf8mb4"
+    db_connection_string = "key"
     engine = create_engine(db_connection_string,
                            connect_args={
                                "ssl": {
