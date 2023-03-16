@@ -2,10 +2,10 @@ from flask import Flask,render_template, request, jsonify
 from date import date
 from phonenumbers import geocoder
 from flask import jsonify, Flask, request
-import geocoder as geo
+from sqlalchemy import create_engine, text
 import folium
-import requests
 from ip import ip
+import datetime
 
 
 
@@ -13,6 +13,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
+
     return render_template('home.html')
 
 @app.route("/<nr>/apply")
@@ -27,11 +28,14 @@ def search(nr):
     locatie = info['location'][0]
     lat = info['lat']
     lng = info['lng']
+
     return harta()
     # return render_template('info.html', info=info,nr=nr, map=map)
 
+
 # @app.route('/map')
 def harta():
+    global new_ip
 
     new_ip = ip()
     # {'country_code': 'RO', 'country_name': 'Romania', 'city': 'Constanța', 'postal': '900270', 'latitude': 44.1807, 'longitude': 28.6343, 'IPv4': '5.14.129.88', 'state': 'Constanta'}
@@ -73,8 +77,27 @@ def harta():
             </body>
         </html>    
     """))
+    add_info_to_db()
     return map._repr_html_()
 
+
+def add_info_to_db():
+    time = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+    db_connection_string = "mysql+pymysql://xtt21s7bt0zkkiuqqqqw:" \
+                           "pscale_pw_VxZjpEoeNk2k7Op24myI3Yk0aYM20SGKRNZgXe1cafB@" \
+                           "eu-central.connect.psdb.cloud/phone_locator?charset=utf8mb4"
+    engine = create_engine(db_connection_string,
+                           connect_args={
+                               "ssl": {
+                                   "ssl_ca": "/etc/ssl/cert.pem"
+                               }
+                           })
+    with engine.connect() as conn:
+        query = text("insert into info (timedate,phone,country,  ip,country_ip, city_ip) VALUES(:timedate,:phone,:country,:ip,:country_ip, :city_ip);")
+
+        conn.execute(query, {"timedate":time ,"phone": numar, "country": {info['country_code']}, "ip": new_ip['IPv4'],
+                             'country_ip': new_ip['country_name'], 'city_ip': new_ip['city']})
 
 
 if __name__ == "__main__":

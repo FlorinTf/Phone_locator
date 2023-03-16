@@ -9,3 +9,5 @@ pytz
 geopy
 folium
 requests
+sqlalchemy
+pymysql
