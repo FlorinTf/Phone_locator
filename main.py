@@ -70,7 +70,7 @@ def harta():
                         <p class="px-5">The number {numar} is registered in {info['location']} / {info['continent']}<br>
                     The country code is {info['country_code']}<br> The local currency is {info['currency']}, the symbol is {info['symbol']}<br>
                         Local time in {info['country']} is {info['current_time']}<br>
-                        You are in {new_ip['city']} / {new_ip['country_name']}
+                        
                         </p>
                     </h2>       
                 </div>
